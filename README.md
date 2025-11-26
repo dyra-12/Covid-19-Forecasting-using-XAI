@@ -405,23 +405,25 @@ jupyter lab notebooks/XAI_Demo_Dashboard.ipynb
 
 Comparative evaluation on test set (example results):
 
-| Model              | MSE     | RMSE    | MAE     | R²      | Training Time |
-|--------------------|---------|---------|---------|---------|---------------|
-| BiLSTM             | 0.0042  | 0.0648  | 0.0512  | 0.9823  | 8.2 min       |
-| CNN-BiLSTM         | 0.0045  | 0.0671  | 0.0534  | 0.9811  | 9.1 min       |
-| LSTM               | 0.0051  | 0.0714  | 0.0567  | 0.9785  | 7.5 min       |
-| CNN-LSTM           | 0.0053  | 0.0728  | 0.0581  | 0.9776  | 8.8 min       |
-| MLP-CNN-LSTM       | 0.0058  | 0.0761  | 0.0609  | 0.9755  | 10.3 min      |
-| CNN                | 0.0074  | 0.0860  | 0.0695  | 0.9689  | 5.2 min       |
-| RNN                | 0.0089  | 0.0943  | 0.0768  | 0.9625  | 6.1 min       |
-| CNN-Dense          | 0.0092  | 0.0959  | 0.0781  | 0.9613  | 5.8 min       |
-| MLP                | 0.0112  | 0.1058  | 0.0874  | 0.9528  | 4.5 min       |
+
+| Model                        | MSE       | RMSE     | MAE      | R²       | Training Time |
+|-----------------------------:|----------:|---------:|---------:|---------:|---------------|
+| Hybrid CNN-LSTM              | 1.93e-05  | 0.004395 | 0.002956 | 0.999799 | 8.8 min       |
+| LSTM                         | 3.72e-05  | 0.006098 | 0.004042 | 0.999614 | 7.5 min       |
+| CNN                          | 5.04e-05  | 0.007101 | 0.005196 | 0.999476 | 5.2 min       |
+| RNN                          | 0.000102  | 0.010117 | 0.007328 | 0.998936 | 6.1 min       |
+| MLP                          | 0.000105  | 0.010261 | 0.008211 | 0.998906 | 4.5 min       |
+| Bidirectional LSTM (BiLSTM)  | 0.000160  | 0.012654 | 0.008316 | 0.998335 | 8.2 min       |
+| Hybrid MLP + CNN + LSTM      | 0.000341  | 0.018456 | 0.013151 | 0.996459 | 10.3 min      |
+| Hybrid CNN + Bi-LSTM         | 0.005582  | 0.074737 | 0.052589 | 0.941983 | 9.1 min       |
+
 
 **Key Findings:**
-1. Bidirectional architectures (BiLSTM) achieve superior performance, capturing both past and future context
-2. Hybrid models effectively combine spatial (CNN) and temporal (LSTM) feature learning
-3. Vanilla RNN underperforms due to vanishing gradient limitations
-4. Trade-off exists between model complexity and training efficiency
+1. Best model: Hybrid CNN-LSTM — it has the lowest MSE (1.93e-05), lowest MAE (0.002956), and highest R² (0.999799).
+2. Strong performers: LSTM and CNN follow, with LSTM slightly better than CNN on these metrics.
+3. Bidirectional LSTM performed worse than the plain LSTM in this evaluation.
+4. Complex hybrids do not always improve test performance: Hybrid MLP+CNN+LSTM and Hybrid CNN+Bi-LSTM show higher errors.
+5. The Hybrid CNN+Bi-LSTM shows substantially worse performance (MSE 0.005582, MAE 0.052589), which may indicate misconfiguration, training instability, or overfitting.
 
 ### Explainability Insights
 
