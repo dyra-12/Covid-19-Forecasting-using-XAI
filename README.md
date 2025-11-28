@@ -440,6 +440,27 @@ Comparative evaluation on test set (example results):
 
 ---
 
+### Important Plots (CNN-LSTM)
+
+Below are the key visualizations generated for the Hybrid CNN-LSTM model. Files are stored under the `results/` directory.
+
+- **Actual vs Predicted:** `results/plots/actual_predicted_cnn_lstm.png`
+- **SHAP summary plot:** `results/shap_outputs/cnn_lstm_shap_summ.png`
+- **SHAP feature-importance plot:** `results/shap_outputs/cnn_lstm_shap_fi.png`
+- **LIME explanation (example instance):** `results/lime_outputs/cnn_lstm_lime_exp.png`
+- **LIME feature-importance plot:** `results/lime_outputs/cnn_lstm_lime_fi.png`
+
+![](results/plots/actual_predicted_cnn_lstm.png)
+
+![](results/shap_outputs/cnn_lstm_shap_summ.png)
+
+![](results/shap_outputs/cnn_lstm_shap_fi.png)
+
+![](results/lime_outputs/cnn_lstm_lime_exp.png)
+
+![](results/lime_outputs/cnn_lstm_lime_fi.png)
+
+
 ## Theoretical Background
 
 ### Time Series Forecasting
